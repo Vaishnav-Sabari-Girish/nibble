@@ -19,4 +19,4 @@ nibble block --title "Block Widget" --border rounded --border-color cyan --heigh
 
 Gives you this output
 
-![block](./recordings/block.gif)
+![block](https://vhs.charm.sh/vhs-MBt8IwfQgYwznfq5h72Rm.gif)
