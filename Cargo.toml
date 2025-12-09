@@ -1,5 +1,5 @@
 [package]
-name = "nibble"
+name = "nibble-rs"
 version = "0.0.1"
 edition = "2024"
 description = "A tool for glamorous shell scripts. Quick, inline TUI components built with Ratatui—no full-screen takeover, just small bites of interaction. "
@@ -22,3 +22,7 @@ clap = { version = "4.5.53", features = ["derive"] }
 crossterm = "0.29.0"
 ratatui = "0.29.0"
 thiserror = "2.0.17"
+
+[[bin]]
+name = "nibble"
+path = "src/main.rs"
