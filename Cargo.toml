@@ -2,6 +2,19 @@
 name = "nibble"
 version = "0.0.1"
 edition = "2024"
+description = "A tool for glamorous shell scripts. Quick, inline TUI components built with Ratatui—no full-screen takeover, just small bites of interaction. "
+authors = ["Vaishnav-Sabari-Girish forgamesonly684@gmail.com"]
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/Vaishnav-Sabari-Girish/nibble"
+keywords = ["tui", "ratatui"]
+categories = ["ratatui", "tui"]
+readme = "README.md"
+include = [
+  "src/*",
+  "Cargo.toml",
+  "README.md",
+  "LICENSE*",
+]
 
 [dependencies]
 anyhow = "1.0.100"
