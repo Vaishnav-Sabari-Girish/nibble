@@ -4,3 +4,19 @@ A tool for glamorous shell scripts. Quick, inline TUI components built with Rata
 
 This tool was inspired by [`gum`](https://github.com/charmbracelet/gum)
 
+
+## Usage 
+
+### Widgets 
+
+Currently `nibble` supports the following widgets
+
+#### Block
+
+```bash
+nibble block --title "Block Widget" --border rounded --border-color cyan --height 7
+```
+
+Gives you this output
+
+![block](./recordings/block.gif)
