@@ -4,6 +4,11 @@ A tool for glamorous shell scripts. Quick, inline TUI components built with Rata
 
 This tool was inspired by [`gum`](https://github.com/charmbracelet/gum)
 
+## Installation 
+
+```bash
+cargo install nibble-rs
+```
 
 ## Usage 
 
