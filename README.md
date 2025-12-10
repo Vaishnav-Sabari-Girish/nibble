@@ -4,6 +4,10 @@ A tool for glamorous shell scripts. Quick, inline TUI components built with Rata
 
 This tool was inspired by [`gum`](https://github.com/charmbracelet/gum)
 
+[![Crates.io](https://img.shields.io/crates/v/nibble-rs.svg)](https://crates.io/crates/nibble-rs)
+[![License](https://img.shields.io/badge/license-MIT%2FApache--2.0-blue.svg)](LICENSE-APACHE)
+[![Minimum Supported Rust Version](https://img.shields.io/badge/MSRV-1.70.0-blue.svg)](https://rust-lang.org)
+
 ## Installation 
 
 ```bash
