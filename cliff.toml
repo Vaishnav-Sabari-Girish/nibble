@@ -18,6 +18,7 @@ body = """
         {% else -%}
             - {{ commit.message | upper_first | trim }}\
         {% endif -%}
+        {% if commit.id %} - ([{{ commit.id | truncate(length=7, end="") }}](https://github.com/{{ remote.github.owner }}/{{ remote.github.repo }}/commit/{{ commit.id }})){%- endif -%}
         {% if commit.remote.pr_number %} in \
             [#{{ commit.remote.pr_number }}](https://github.com/{{ remote.github.owner }}/{{ remote.github.repo }}/pull/{{ commit.remote.pr_number }}) \
         {%- endif -%}
