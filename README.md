@@ -25,3 +25,13 @@ nibble block --title "Block Widget" --border rounded --border-color cyan --heigh
 Gives you this output
 
 ![block](https://vhs.charm.sh/vhs-MBt8IwfQgYwznfq5h72Rm.gif)
+
+#### Gauge
+
+```bash
+nibble gauge -v 75 --title "Progress" --border double --fg green --modifier bold --time 120
+```
+
+Gives you this output 
+
+![gauge](https://vhs.charm.sh/vhs-5RKyIF079btFrL1EFz948L.gif)

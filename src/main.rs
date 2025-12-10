@@ -1,7 +1,9 @@
 #![allow(dead_code)]
 #![allow(unused_imports)]
 #![allow(unused_variables)]
+
 mod error;
+mod style;
 mod tui;
 mod widgets;
 

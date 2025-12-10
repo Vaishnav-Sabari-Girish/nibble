@@ -1,9 +1,8 @@
-use crate::{error::{NibbleError, Result}, tui};
+use crate::{error::{NibbleError, Result}, style::StyleConfig, tui};
 use clap::Args;
 use crossterm::event::{self, Event, KeyCode};
 use ratatui::{
-    style::{Color, Style},
-    widgets::{Block as RatatuiBlock, BorderType, Borders, Padding},
+    widgets::{Block as RatatuiBlock, Borders, Padding},
     Frame,
 };
 
@@ -12,14 +11,6 @@ pub struct BlockArgs {
     /// Title of the block
     #[arg(short, long, default_value = "")]
     pub title: String,
-
-    /// Border style (rounded, double, thick, plain)
-    #[arg(short, long, default_value = "rounded")]
-    pub border: String,
-
-    /// Border color (red, green, blue, yellow, cyan, magenta, white)
-    #[arg(short = 'c', long)]
-    pub border_color: Option<String>,
 
     /// Height of the block in lines
     #[arg(long, default_value = "5")]
@@ -32,6 +23,9 @@ pub struct BlockArgs {
     /// Padding inside the block
     #[arg(short, long, default_value = "1")]
     pub padding: u16,
+
+    #[command(flatten)]
+    pub style: StyleConfig,
 }
 
 pub fn run(args: BlockArgs) -> anyhow::Result<()> {
@@ -76,52 +70,20 @@ pub fn run(args: BlockArgs) -> anyhow::Result<()> {
 fn render(frame: &mut Frame, args: &BlockArgs) -> Result<()> {
     let area = frame.area();
 
-    let border_type = parse_border_type(&args.border)?;
-
-    let border_style = if let Some(ref color_str) = args.border_color {
-        Style::default().fg(parse_color(color_str)?)
-    } else {
-        Style::default()
-    };
+    let border_type = args.style.border_type()?;
+    let border_style = args.style.border_style()?;
 
     let block = RatatuiBlock::default()
         .title(args.title.as_str())
-        .borders(Borders::ALL)
+        .borders(if args.style.border == "none" {
+            Borders::NONE
+        } else {
+            Borders::ALL
+        })
         .border_type(border_type)
         .border_style(border_style)
         .padding(Padding::uniform(args.padding));
 
     frame.render_widget(block, area);
     Ok(())
-}
-
-fn parse_color(color: &str) -> Result<Color> {
-    match color.to_lowercase().as_str() {
-        "red" => Ok(Color::Red),
-        "green" => Ok(Color::Green),
-        "blue" => Ok(Color::Blue),
-        "yellow" => Ok(Color::Yellow),
-        "cyan" => Ok(Color::Cyan),
-        "magenta" => Ok(Color::Magenta),
-        "white" => Ok(Color::White),
-        "black" => Ok(Color::Black),
-        "gray" | "grey" => Ok(Color::Gray),
-        _ => Err(NibbleError::InvalidColor(format!(
-            "Unknown color '{}'. Valid colors: red, green, blue, yellow, cyan, magenta, white, black, gray",
-            color
-        ))),
-    }
-}
-
-fn parse_border_type(border: &str) -> Result<BorderType> {
-    match border.to_lowercase().as_str() {
-        "rounded" => Ok(BorderType::Rounded),
-        "double" => Ok(BorderType::Double),
-        "thick" => Ok(BorderType::Thick),
-        "plain" => Ok(BorderType::Plain),
-        _ => Err(NibbleError::InvalidBorderType(format!(
-            "Unknown border type '{}'. Valid types: rounded, double, thick, plain",
-            border
-        ))),
-    }
 }
