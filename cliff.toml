@@ -10,46 +10,20 @@
 # A Tera template to be rendered for each release in the changelog.
 # See https://keats.github.io/tera/docs/#introduction
 body = """
-## What's Changed
-
-{%- if version %} in {{ version | trim_start_matches(pat="v") }}{%- endif -%}
-{% for commit in commits %}
-  {% if commit.remote.pr_title -%}
-    {%- set commit_message = commit.remote.pr_title -%}
-  {%- else -%}
-    {%- set commit_message = commit.message -%}
-  {%- endif -%}
-  * {{ commit_message | split(pat="\n") | first | trim }}\
-    {% if commit.remote.username %} by @{{ commit.remote.username }}{%- endif -%}
-    {% if commit.remote.pr_number %} in \
-      [#{{ commit.remote.pr_number }}]({{ self::remote_url() }}/pull/{{ commit.remote.pr_number }}) \
-    {%- endif %}
-{%- endfor -%}
-
-{%- if github -%}
-{% if github.contributors | filter(attribute="is_first_time", value=true) | length != 0 %}
-  {% raw %}\n{% endraw -%}
-  ### New Contributors
-{%- endif %}\
-{% for contributor in github.contributors | filter(attribute="is_first_time", value=true) %}
-  * @{{ contributor.username }} made their first contribution
-    {%- if contributor.pr_number %} in \
-      [#{{ contributor.pr_number }}]({{ self::remote_url() }}/pull/{{ contributor.pr_number }}) \
-    {%- endif %}
-{%- endfor -%}
-{%- endif -%}
-
-{% if version %}
-    {% if previous.version %}
-      **Full Changelog**: {{ self::remote_url() }}/compare/{{ previous.version }}...{{ version }}
-    {% endif %}
-{% else -%}
-  {% raw %}\n{% endraw %}
-{% endif %}
-
-{%- macro remote_url() -%}
-  https://github.com/{{ remote.github.owner }}/{{ remote.github.repo }}
-{%- endmacro -%}
+{% for group, commits in commits | group_by(attribute="group") %}
+    ### {{ group | striptags | trim | upper_first }}
+    {% for commit in commits %}
+        {% if commit.scope -%}
+            - **({{commit.scope}})** {{ commit.message | upper_first | trim }}\
+        {% else -%}
+            - {{ commit.message | upper_first | trim }}\
+        {% endif -%}
+        {% if commit.remote.pr_number %} in \
+            [#{{ commit.remote.pr_number }}](https://github.com/{{ remote.github.owner }}/{{ remote.github.repo }}/pull/{{ commit.remote.pr_number }}) \
+        {%- endif -%}
+        {% if commit.remote.username %} by @{{ commit.remote.username }}{%- endif %}
+    {% endfor %}
+{% endfor %}
 """
 # Remove leading and trailing whitespaces from the changelog's body.
 trim = true
@@ -67,14 +41,19 @@ postprocessors = []
 # See https://www.conventionalcommits.org
 conventional_commits = true
 # Exclude commits that do not match the conventional commits specification.
-filter_unconventional = true
+filter_unconventional = false
 # Split commits on newlines, treating each line as an individual commit.
 split_commits = false
 commit_parsers = [
-    { message = "^feat*", group = "<!-- 0 -->:rocket: New features" },
-    { message = "^fix*", group = "<!-- 1 -->:bug: Bug fixes" },
-    { message = "^perf*", group = "<!-- 2 -->:zap: Performance" },
-    { message = "^chore*", group = "<!-- 3 -->:gear: Miscellaneous" },
+    { message = "^feat", group = "<!-- 0 -->:rocket: New features" },
+    { message = "^fix", group = "<!-- 1 -->:bug: Bug fixes" },
+    { message = "^docs", group = "<!-- 2 -->:page_facing_up: Documentation" },
+    { message = "^perf", group = "<!-- 3 -->:zap: Performance" },
+    { message = "^chore", group = "<!-- 4 -->:wrench: Miscellaneous" },
+    { message = "^refactor", group = "<!-- 5 -->:recycle: Refactoring" },
+    { message = "^style", group = "<!-- 6 -->:art: Styling" },
+    { message = "^test", group = "<!-- 7 -->:white_check_mark: Testing" },
+    { message = ".*", group = "<!-- 8 -->:package: Other" },
 ]
 # An array of regex based parsers to modify commit messages prior to further processing.
 commit_preprocessors = [{ pattern = '\((\w+\s)?#([0-9]+)\)', replace = "" }]
