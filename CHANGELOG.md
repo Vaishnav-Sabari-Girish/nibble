@@ -1,45 +1,47 @@
 
 ### :page_facing_up: Documentation
 
-- **(updated cl)** Updated CHANGELOG.md - ([56e91ce](https://github.com///commit/56e91ce44f2ddf2c9e492cd23bc2dc3f96055854))
+- **(commit hashes cl)** Added commit hashes - ([1e2153e](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/1e2153ed5a2a25c681402487de0b648d40e62e4e)) by @Vaishnav-Sabari-Girish
 
-- **(updated log)** Updated changelog - ([7482e2e](https://github.com///commit/7482e2e6d1ea92b2ab47d2a697028b92051a03e8))
+- **(updated cl)** Updated CHANGELOG.md - ([56e91ce](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/56e91ce44f2ddf2c9e492cd23bc2dc3f96055854)) by @Vaishnav-Sabari-Girish
 
-- **(added changelog)** Added CHANGELOG.md - ([a5008f4](https://github.com///commit/a5008f4daba1b571c86d75b2a9e72fa548484ac9))
+- **(updated log)** Updated changelog - ([7482e2e](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/7482e2e6d1ea92b2ab47d2a697028b92051a03e8)) by @Vaishnav-Sabari-Girish
+
+- **(added changelog)** Added CHANGELOG.md - ([a5008f4](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/a5008f4daba1b571c86d75b2a9e72fa548484ac9)) by @Vaishnav-Sabari-Girish
 
 
 ### :package: Other
 
-- Added CHANGELOG.md - ([6580fcc](https://github.com///commit/6580fcca70c2ba34ac710e6ba77bfa4fc7a9b47d))
+- Added CHANGELOG.md - ([6580fcc](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/6580fcca70c2ba34ac710e6ba77bfa4fc7a9b47d)) by @Vaishnav-Sabari-Girish
 
-- Updated README.md with badges - ([fba9258](https://github.com///commit/fba92585e01a94ff6cd71ee40f1a9de20e6a560a))
+- Updated README.md with badges - ([fba9258](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/fba92585e01a94ff6cd71ee40f1a9de20e6a560a)) by @Vaishnav-Sabari-Girish
 
-- Added gauge and also updated the code with a new style.rs file - ([28b22b5](https://github.com///commit/28b22b59c0df38dbd74a052c7c07534d5ac5bbfa))
+- Added gauge and also updated the code with a new style.rs file - ([28b22b5](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/28b22b59c0df38dbd74a052c7c07534d5ac5bbfa)) by @Vaishnav-Sabari-Girish
 
-- Added gauge and also added a style file for easier styling - ([f0af262](https://github.com///commit/f0af2629efcc22267a37726e7d9301c5d6750c6e))
+- Added gauge and also added a style file for easier styling - ([f0af262](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/f0af2629efcc22267a37726e7d9301c5d6750c6e)) by @Vaishnav-Sabari-Girish
 
-- Removed SVG file (Forgot it was there - ([9e9e56d](https://github.com///commit/9e9e56d920aef3cfeba8173e4a750f1015981691))
+- Removed SVG file (Forgot it was there - ([9e9e56d](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/9e9e56d920aef3cfeba8173e4a750f1015981691)) by @Vaishnav-Sabari-Girish
 
-- Added Cargo install to README.md - ([06d4185](https://github.com///commit/06d418548a6e823ce7604cd1f716dced4943079e))
+- Added Cargo install to README.md - ([06d4185](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/06d418548a6e823ce7604cd1f716dced4943079e)) by @Vaishnav-Sabari-Girish
 
-- Updated categories - ([0bc6d6d](https://github.com///commit/0bc6d6d8cb31e4703da9add0c2da1ae76d625930))
+- Updated categories - ([0bc6d6d](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/0bc6d6d8cb31e4703da9add0c2da1ae76d625930)) by @Vaishnav-Sabari-Girish
 
-- Updated name for crates.io - ([219489f](https://github.com///commit/219489fdad269acb849b36363f1370105d0ee9d0))
+- Updated name for crates.io - ([219489f](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/219489fdad269acb849b36363f1370105d0ee9d0)) by @Vaishnav-Sabari-Girish
 
-- Changed name for crates.io - ([541bb7b](https://github.com///commit/541bb7b2ea65d51a55b73708426e3652d847cdc9))
+- Changed name for crates.io - ([541bb7b](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/541bb7b2ea65d51a55b73708426e3652d847cdc9)) by @Vaishnav-Sabari-Girish
 
-- Updated gitignore - ([ff523e5](https://github.com///commit/ff523e5318dd4d2f1a8ad903e88468e41bf1766a))
+- Updated gitignore - ([ff523e5](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/ff523e5318dd4d2f1a8ad903e88468e41bf1766a)) by @Vaishnav-Sabari-Girish
 
-- Added VHS Link - ([31a1283](https://github.com///commit/31a12836f2fda32f30a0084cddc8f68b64b0b94f))
+- Added VHS Link - ([31a1283](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/31a12836f2fda32f30a0084cddc8f68b64b0b94f)) by @Vaishnav-Sabari-Girish
 
-- Updated Cargo.toml - ([03d0f8a](https://github.com///commit/03d0f8a8fd67d4705ffe701d6e71adb33d04bc1c))
+- Updated Cargo.toml - ([03d0f8a](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/03d0f8a8fd67d4705ffe701d6e71adb33d04bc1c)) by @Vaishnav-Sabari-Girish
 
-- Updated version - ([6a16842](https://github.com///commit/6a1684232c936662ade6ce3d9e5c8a8af1d7e6fe))
+- Updated version - ([6a16842](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/6a1684232c936662ade6ce3d9e5c8a8af1d7e6fe)) by @Vaishnav-Sabari-Girish
 
-- Added BLOCK Recordings and updated README.md - ([d4e73d5](https://github.com///commit/d4e73d565e91725e565f08f82961738a131d0f7a))
+- Added BLOCK Recordings and updated README.md - ([d4e73d5](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/d4e73d565e91725e565f08f82961738a131d0f7a)) by @Vaishnav-Sabari-Girish
 
-- Added Block widget - ([8c284fc](https://github.com///commit/8c284fcec13ebe69d378ed87a84229af9cdcdb78))
+- Added Block widget - ([8c284fc](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/8c284fcec13ebe69d378ed87a84229af9cdcdb78)) by @Vaishnav-Sabari-Girish
 
-- Added README.md - ([79470f5](https://github.com///commit/79470f50646043be6eec5f2ee48bfdde2067854e))
+- Added README.md - ([79470f5](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/79470f50646043be6eec5f2ee48bfdde2067854e)) by @Vaishnav-Sabari-Girish
 
 <!-- generated by git-cliff -->

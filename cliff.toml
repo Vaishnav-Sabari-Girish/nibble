@@ -1,10 +1,10 @@
 # git-cliff ~ configuration file
 # https://git-cliff.org/docs/configuration
 
-# [remote.github]
-# owner = "orhun"
-# repo = "git-cliff"
-# token = ""
+
+[remote.github]
+owner = "Vaishnav-Sabari-Girish"
+repo = "nibble"
 
 [changelog]
 # A Tera template to be rendered for each release in the changelog.
