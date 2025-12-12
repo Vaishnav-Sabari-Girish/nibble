@@ -1,4 +1,9 @@
 
+### :rocket: New features
+
+- **(added table)** Added table widget - ([d99b60b](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/d99b60b8318c7a9e264418e59f76715993ef9739)) by @Vaishnav-Sabari-Girish
+
+
 ### :page_facing_up: Documentation
 
 - **(Added TOC)** Added Table of Contents - ([df791cb](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/df791cbe8d8fcaa011aeb97ca280da0936d42f73)) by @Vaishnav-Sabari-Girish
