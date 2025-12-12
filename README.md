@@ -44,9 +44,6 @@ Currently `nibble` supports the following widgets
 ```bash
 nibble block --title "Block Widget" --border rounded --border-color cyan --height 7
 ```
-
-Gives you this output
-
 ![block](https://vhs.charm.sh/vhs-MBt8IwfQgYwznfq5h72Rm.gif)
 
 #### Gauge
@@ -54,23 +51,14 @@ Gives you this output
 ```bash
 nibble gauge -v 75 --title "Progress" --border double --fg green --modifier bold --time 120
 ```
-
-Gives you this output 
-
 ![gauge](https://vhs.charm.sh/vhs-5RKyIF079btFrL1EFz948L.gif)
 
 #### Table
 
 Display tabular data inline with customizable styling and multiple data formats.
-
-This below command 
-
 ```bash
 nibble table --data "Name,Age,City;Alice,30,NYC;Bob,25,LA;Carol,28,SF" -t "Users" --highlight-header
 ```
-
-Will output this 
-
 ![table](https://vhs.charm.sh/vhs-1Aql3bxeY6rs8auZSFcQbx.gif)
 
 **Inline Data:**
