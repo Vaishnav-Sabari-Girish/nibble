@@ -1,6 +1,6 @@
 [package]
 name = "nibble-rs"
-version = "0.0.2"
+version = "0.0.3"
 edition = "2024"
 description = "A tool for glamorous shell scripts. Quick, inline TUI components built with Ratatui—no full-screen takeover, just small bites of interaction. "
 authors = ["Vaishnav-Sabari-Girish forgamesonly684@gmail.com"]
@@ -21,6 +21,7 @@ anyhow = "1.0.100"
 clap = { version = "4.5.53", features = ["derive"] }
 crossterm = "0.29.0"
 ratatui = "0.29.0"
+serde_json = "1.0.145"
 thiserror = "2.0.17"
 
 [[bin]]

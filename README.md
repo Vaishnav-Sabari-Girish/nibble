@@ -9,6 +9,7 @@
     - [Widgets](#widgets)
       - [Block](#block)
       - [Gauge](#gauge)
+      - [Table](#table)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -57,3 +58,77 @@ nibble gauge -v 75 --title "Progress" --border double --fg green --modifier bold
 Gives you this output 
 
 ![gauge](https://vhs.charm.sh/vhs-5RKyIF079btFrL1EFz948L.gif)
+
+#### Table
+
+Display tabular data inline with customizable styling and multiple data formats.
+
+This below command 
+
+```bash
+nibble table --data "Name,Age,City;Alice,30,NYC;Bob,25,LA;Carol,28,SF" -t "Users" --highlight-header
+```
+
+Will output this 
+
+![table](https://vhs.charm.sh/vhs-1Aql3bxeY6rs8auZSFcQbx.gif)
+
+**Inline Data:**
+
+```bash
+nibble table --data "Name,Age,City;Alice,30,NYC;Bob,25,LA;Carol,28,SF" --title "Users" --highlight-header
+```
+
+**From CSV File:**
+
+```bash
+nibble table --file data.csv --title "CSV Data" --height 12 --border rounded --fg cyan
+```
+
+
+**From JSON File:**
+
+```bash
+nibble table --file users.json --title "Users" --highlight-header --border double
+```
+
+
+**With Custom Column Widths:**
+
+```bash
+nibble table -d "Product,Price,Stock;Laptop,999,50;Mouse,25,200" -w "50,25,25" -t "Inventory"
+```
+
+**Supported Formats:**
+- **Inline data**: Use semicolons (`;`) for rows and commas (`,`) for columns
+- **CSV files**: Standard comma-separated values
+- **JSON files**: Array of objects `[{"name": "Alice", ...}]` or array of arrays `[["Name", "Age"], ["Alice", 30]]`
+
+**Key Options:**
+- `--data, -d`: Inline data string
+- `--file, -f`: Path to CSV or JSON file
+- `--headers`: Custom column headers (comma-separated)
+- `--widths, -w`: Column widths as percentages (comma-separated, must sum to ≤100)
+- `--highlight-header`: Bold the header row
+- `--height`: Table height in lines (default: 10)
+- `--title, -t`: Title for the table block
+
+**Example JSON (array of objects):**
+
+```json
+[
+  {"name": "Alice", "age": 30, "city": "NYC"},
+  {"name": "Bob", "age": 25, "city": "LA"}
+]
+```
+
+
+**Example JSON (array of arrays):**
+
+```json
+[
+  ["Name", "Age", "City"],
+  ["Alice", 30, "NYC"],
+  ["Bob", 25, "LA"]
+]
+```

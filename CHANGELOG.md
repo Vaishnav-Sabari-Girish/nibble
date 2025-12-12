@@ -1,6 +1,8 @@
 
 ### :page_facing_up: Documentation
 
+- **(Added TOC)** Added Table of Contents - ([df791cb](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/df791cbe8d8fcaa011aeb97ca280da0936d42f73)) by @Vaishnav-Sabari-Girish
+
 - **(Added links)** Added commit links - ([6531d6f](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/6531d6f178239ea55f1d47b59f51d7af0c8f9ed4)) by @Vaishnav-Sabari-Girish
 
 - **(commit hashes cl)** Added commit hashes - ([1e2153e](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/1e2153ed5a2a25c681402487de0b648d40e62e4e)) by @Vaishnav-Sabari-Girish
