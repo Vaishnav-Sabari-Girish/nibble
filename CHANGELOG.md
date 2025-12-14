@@ -8,6 +8,8 @@
 
 ### :page_facing_up: Documentation
 
+- **(updated cl)** Updated changelog - ([ddf14bb](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/ddf14bb783022cb168663fba7b457e9e6f2e951d))
+
 - **(updated cl)** Updated CHANGELOG.md - ([5ac1ca0](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/5ac1ca0411a4e4c0939d3485e5a1ee1f04d2cbc1)) by @Vaishnav-Sabari-Girish
 
 - **(Added TOC)** Added Table of Contents - ([df791cb](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/df791cbe8d8fcaa011aeb97ca280da0936d42f73)) by @Vaishnav-Sabari-Girish
