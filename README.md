@@ -10,6 +10,7 @@
       - [Block](#block)
       - [Gauge](#gauge)
       - [Table](#table)
+      - [Input](#input)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -29,7 +30,7 @@ To view the changelog go to [CHANGELOG.md](./CHANGELOG.md) for more details
 
 ## Installation 
 
-```bash
+``` bash
 cargo install nibble-rs
 ```
 
@@ -85,13 +86,11 @@ nibble table --data "Name,Age,City;Alice,30,NYC;Bob,25,LA;Carol,28,SF" --title "
 nibble table --file data.csv --title "CSV Data" --height 12 --border rounded --fg cyan
 ```
 
-
 **From JSON File:**
 
 ```bash
 nibble table --file users.json --title "Users" --highlight-header --border double
 ```
-
 
 **With Custom Column Widths:**
 
@@ -122,7 +121,6 @@ nibble table -d "Product,Price,Stock;Laptop,999,50;Mouse,25,200" -w "50,25,25" -
 ]
 ```
 
-
 **Example JSON (array of arrays):**
 
 ```json
@@ -132,3 +130,51 @@ nibble table -d "Product,Price,Stock;Laptop,999,50;Mouse,25,200" -w "50,25,25" -
   ["Bob", 25, "LA"]
 ]
 ```
+
+#### Input
+
+Single-line text input field with support for prompts, placeholders, passwords, and character limits.
+
+**Basic Input:**
+
+```bash
+nibble input --prompt "Name:" --placeholder "Enter your name"
+```
+
+[![basic input](https://asciinema.org/a/2SMRB0ZiHwErPCeXC9mqgVQlQ.svg)](https://asciinema.org/a/2SMRB0ZiHwErPCeXC9mqgVQlQ)
+
+**Password Input:**
+
+```bash
+nibble input --prompt "Password:" --password --border double
+```
+
+[![pwd](https://asciinema.org/a/2SMRB0ZiHwErPCeXC9mqgVQlQ.svg)](https://asciinema.org/a/2SMRB0ZiHwErPCeXC9mqgVQlQ)
+
+**With Character Limit and Counter:**
+
+```bash
+nibble input --prompt "Username:" --max-length 20 --show-count --border rounded --fg cyan
+```
+
+**Pre-filled Value:**
+
+```bash
+nibble input --prompt "Email:" --value "user@example.com" --show-count
+```
+
+**Styled Input:**
+
+```bash
+nibble input --title "User Input" --prompt "City:" --placeholder "New York" --border thick --fg green
+```
+
+**Key Options:**
+- `--prompt, -r`: Label text displayed before the input field
+- `--placeholder, -p`: Placeholder text shown when input is empty
+- `--value, -v`: Initial/pre-filled value
+- `--title, -t`: Title for the input block
+- `--password`: Masks input with asterisks (does not print output)
+- `--max-length, -m`: Character limit
+- `--show-count, -c`: Display character counter
+- `--height`: Widget height in lines (default: 3)
