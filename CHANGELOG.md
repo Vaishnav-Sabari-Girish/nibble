@@ -1,10 +1,14 @@
 
 ### :rocket: New features
 
+- **(input widget)** Added input widget - ([c67ad08](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/c67ad0869d6db16a76df0763def211be3aef2846))
+
 - **(added table)** Added table widget - ([d99b60b](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/d99b60b8318c7a9e264418e59f76715993ef9739)) by @Vaishnav-Sabari-Girish
 
 
 ### :page_facing_up: Documentation
+
+- **(updated cl)** Updated CHANGELOG.md - ([5ac1ca0](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/5ac1ca0411a4e4c0939d3485e5a1ee1f04d2cbc1)) by @Vaishnav-Sabari-Girish
 
 - **(Added TOC)** Added Table of Contents - ([df791cb](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/df791cbe8d8fcaa011aeb97ca280da0936d42f73)) by @Vaishnav-Sabari-Girish
 
