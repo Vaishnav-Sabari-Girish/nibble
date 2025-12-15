@@ -8,7 +8,7 @@ mod tui;
 mod widgets;
 
 use clap::{Parser, Subcommand};
-use widgets::{block, gauge, table, input};
+use widgets::{block, gauge, table, input, confirm};
 
 #[derive(Parser)]
 #[command(name = "nibble")]
@@ -28,6 +28,8 @@ enum Commands {
     Table(table::TableArgs),
     /// Render User Input
     Input(input::InputArgs),
+    /// Render confirmation buttons
+    Confirm(confirm::ConfirmArgs),
 }
 
 fn main() -> anyhow::Result<()> {
@@ -38,6 +40,7 @@ fn main() -> anyhow::Result<()> {
         Commands::Gauge(args) => gauge::run(args)?,
         Commands::Table(args) => table::run(args)?,
         Commands::Input(args) => input::run(args)?,
+        Commands::Confirm(args) => input::run(args)?,
     }
 
     Ok(())
