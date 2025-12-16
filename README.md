@@ -11,6 +11,7 @@
       - [Gauge](#gauge)
       - [Table](#table)
       - [Input](#input)
+      - [Confirm](#confirm)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
