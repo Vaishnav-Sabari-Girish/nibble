@@ -1,6 +1,6 @@
 [package]
 name = "nibble-rs"
-version = "0.0.5"
+version = "0.0.6"
 edition = "2024"
 description = "A tool for glamorous shell scripts. Quick, inline TUI components built with Ratatui—no full-screen takeover, just small bites of interaction. "
 authors = ["Vaishnav-Sabari-Girish forgamesonly684@gmail.com"]

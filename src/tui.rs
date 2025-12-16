@@ -5,7 +5,7 @@ use crossterm::{
     ExecutableCommand,
 };
 use ratatui::{backend::CrosstermBackend, Terminal, TerminalOptions, Viewport};
-use std::io::{stdout, Stdout};
+use std::io::{Stdout, stderr, stdout};
 
 pub type Tui = Terminal<CrosstermBackend<Stdout>>;
 
@@ -64,7 +64,7 @@ pub fn restore() -> Result<()> {
     disable_raw_mode()?;
     stdout().execute(LeaveAlternateScreen).ok();
     // Show cursor again
-    stdout()
+    stderr()
         .execute(cursor::Show)
         .map_err(|e| NibbleError::TerminalInit(format!("Failed to show cursor: {}", e)))?;
     Ok(())
