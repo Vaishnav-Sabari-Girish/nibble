@@ -30,12 +30,12 @@ pub struct ConfirmArgs {
     pub negative: String,
 
     /// Button height
-    #[arg(short = 'h', long, default_value = "3")]
+    #[arg(short = 'h', long, default_value = "5")]
     pub height: u16,
 
-    /// Default button to be highlighted/selected
-    #[arg(short = 'd', long, default_value = "true")]
-    pub default: bool,
+    /// Default button to be highlighted/selected ("true", "false")
+    #[arg(long, default_value = "false")]
+    pub default_no: bool,
 
     #[command(flatten)]
     pub style: StyleConfig
@@ -50,7 +50,7 @@ pub fn run(args: ConfirmArgs) -> anyhow::Result<()> {
     }
 
     let mut terminal = tui::init_inline(args.height)?;
-    let mut selected = args.default;
+    let mut selected = !args.default_no;
 
     let result = loop {
         terminal
@@ -59,10 +59,50 @@ pub fn run(args: ConfirmArgs) -> anyhow::Result<()> {
                     eprintln!("Render Error: {}", e);
                 }
             })
-                .map_err(|e| NibbleError::RenderError(e.to_string()))?;
+            .map_err(|e| NibbleError::RenderError(e.to_string()))?;
+        if let Event::Key(key) = event::read()? {
+            match key.code {
+                // Toggle selection
+                KeyCode::Left | KeyCode::Char('h') => selected = true,
+                KeyCode::Right | KeyCode::Char('l') => selected = false,
+                KeyCode::Tab => selected = !selected,
+
+                // Quick selection
+                KeyCode::Char('y') |  KeyCode::Char('Y') => {
+                    break true;
+                }
+                KeyCode::Char('n') | KeyCode::Char('N') => {
+                    break false;
+                }
+
+                // Submit current selection
+                KeyCode::Enter => {
+                    break selected;
+                }
+
+                // Cancel
+                KeyCode::Esc | KeyCode::Char('q') => {
+                    break false;
+                }
+
+                KeyCode::Char('c') if key.modifiers.contains(ratatui::crossterm::event::KeyModifiers::CONTROL) => {
+                    break false;
+                }
+
+                _ => {}
+            }
+        }
+
     };
 
-    Ok(())
+    terminal.clear()?;
+    tui::restore()?;
+
+    if result {
+        std::process::exit(0);
+    } else {
+        std::process::exit(1);
+    }
 }
 
 fn render(frame: &mut Frame, args: &ConfirmArgs, selected: bool) -> crate::error::Result<()> {
@@ -82,4 +122,45 @@ fn render(frame: &mut Frame, args: &ConfirmArgs, selected: bool) -> crate::error
         .style(text_style);
 
     frame.render_widget(question, chunks[0]);
+
+    // Create button layout (centered with fixed width)
+    let button_width = args.affirmative.len().max(args.negative.len()) as u16 + 4;
+    // +4 is for borders and padding
+    let total_width = button_width * 2 + 2;     // Two buttons + gap
+
+    let button_area = centered_rect(chunks[2], total_width, 3);
+
+    let button_chunks = Layout::horizontal([
+        Constraint::Length(button_width),
+        Constraint::Length(2),            // Gap
+        Constraint::Length(button_width),
+    ])
+        .split(button_area);
+
+    // Render yes button
+    let yes_button = Button::new(&args.affirmative)
+        .selected(selected)
+        .style(text_style);
+
+    frame.render_widget(yes_button, button_chunks[0]);
+
+    // Render No button
+    let no_button = Button::new(&args.negative)
+        .selected(!selected)
+        .style(text_style);
+    frame.render_widget(no_button, button_chunks[2]);
+
+    Ok(())
+}
+
+fn centered_rect(area: Rect, width: u16, height: u16) -> Rect {
+    let x = area.x + (area.width.saturating_sub(width)) / 2;
+    let y = area.y + (area.height.saturating_sub(height)) / 2;
+
+    Rect { 
+        x, 
+        y, 
+        width: width.min(area.width),
+        height: height.min(area.height)
+    }
 }

@@ -1,14 +1,18 @@
 
 ### :rocket: New features
 
-- **(input widget)** Added input widget - ([c67ad08](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/c67ad0869d6db16a76df0763def211be3aef2846))
+- **(adding button)** Started working on confirm - ([488382c](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/488382c576d573bfdd13730a651ca08adb8e86a1))
+
+- **(added input)** Added user input - ([f56bb95](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/f56bb95942800c96062f128ae326a3ad4264d7c1)) by @Vaishnav-Sabari-Girish
+
+- **(input widget)** Added input widget - ([c67ad08](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/c67ad0869d6db16a76df0763def211be3aef2846)) by @Vaishnav-Sabari-Girish
 
 - **(added table)** Added table widget - ([d99b60b](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/d99b60b8318c7a9e264418e59f76715993ef9739)) by @Vaishnav-Sabari-Girish
 
 
 ### :page_facing_up: Documentation
 
-- **(updated cl)** Updated changelog - ([ddf14bb](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/ddf14bb783022cb168663fba7b457e9e6f2e951d))
+- **(updated cl)** Updated changelog - ([ddf14bb](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/ddf14bb783022cb168663fba7b457e9e6f2e951d)) by @Vaishnav-Sabari-Girish
 
 - **(updated cl)** Updated CHANGELOG.md - ([5ac1ca0](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/5ac1ca0411a4e4c0939d3485e5a1ee1f04d2cbc1)) by @Vaishnav-Sabari-Girish
 
@@ -26,6 +30,8 @@
 
 
 ### :package: Other
+
+- Updated Cargo.lock - ([230c02f](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/230c02f611be51e78285b8bd536d685bc87bf3cf)) by @Vaishnav-Sabari-Girish
 
 - Added CHANGELOG.md - ([6580fcc](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/6580fcca70c2ba34ac710e6ba77bfa4fc7a9b47d)) by @Vaishnav-Sabari-Girish
 

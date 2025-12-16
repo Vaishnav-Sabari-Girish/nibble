@@ -178,3 +178,36 @@ nibble input --title "User Input" --prompt "City:" --placeholder "New York" --bo
 - `--max-length, -m`: Character limit
 - `--show-count, -c`: Display character counter
 - `--height`: Widget height in lines (default: 3)
+
+#### Confirm
+
+Interactive confirmation prompt with Yes/No buttons. Returns exit code `0` for Yes and `1` for No.
+
+**Basic Confirm**
+
+```bash
+# Default confirm
+nibble confirm 
+```
+
+[![basic_confirm](https://asciinema.org/a/AMhbu8acmuu0hMIEf4SnWtjIc.svg)](https://asciinema.org/a/AMhbu8acmuu0hMIEf4SnWtjIc)
+
+**Custom Text with Custom options**
+
+```bash
+# Custom Text
+nibble confirm --text "Continue ?"
+
+# Custom options
+nibble confirm --text "Continue ?" --affirmative "Proceed" --negative "Cancel"
+```
+
+[![custom_confirm](https://asciinema.org/a/eWOAq5YWufMuZjkyJopa5xbg9.svg)](https://asciinema.org/a/eWOAq5YWufMuZjkyJopa5xbg9)
+
+**Select No by default**
+
+```bash
+nibble confirm --text "Continue ?" --affirmative "Proceed" --negative "Cancel" --default-no
+```
+
+[![no_default](https://asciinema.org/a/whYMpn1pt7gIANXSCzesjDSsT.svg)](https://asciinema.org/a/whYMpn1pt7gIANXSCzesjDSsT)

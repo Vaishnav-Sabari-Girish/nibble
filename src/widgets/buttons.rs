@@ -61,14 +61,23 @@ impl<'a> Widget for Button<'a>  {
         // Render the label centered inside the button
         let label = Line::from(Span::styled(self.label, button_style));
 
-        // Center the text vertically and horizontally
+        // Render the label centered inside the button
         if inner.height > 0 && inner.width > 0 {
-            let label_width = self.label.len() as u16;
-            let x = inner.x + (inner.width.saturating_sub(label_width)) / 2;
+            let label_len = self.label.len() as u16;
+
+            // Center horizontally
+            let x = inner.x + (inner.width.saturating_sub(label_len)) / 2;
+            // Center vertically
             let y = inner.y + inner.height / 2;
 
-            if x < inner.right() && y < inner.bottom() {
-                buf.set_line(x, y, &label, label_width);
+            // Write each character of the label
+            for(i, ch) in self.label.chars().enumerate() {
+                let cell_x = x + i as u16;
+                if cell_x < inner.right() && y < inner.bottom() {
+                    buf[(cell_x, y)]
+                        .set_char(ch)
+                        .set_style(button_style);
+                }
             }
         }
     }

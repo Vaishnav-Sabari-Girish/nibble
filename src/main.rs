@@ -40,7 +40,7 @@ fn main() -> anyhow::Result<()> {
         Commands::Gauge(args) => gauge::run(args)?,
         Commands::Table(args) => table::run(args)?,
         Commands::Input(args) => input::run(args)?,
-        Commands::Confirm(args) => input::run(args)?,
+        Commands::Confirm(args) => confirm::run(args)?,
     }
 
     Ok(())
