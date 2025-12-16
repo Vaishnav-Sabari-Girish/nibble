@@ -1,7 +1,9 @@
 
 ### :rocket: New features
 
-- **(adding button)** Started working on confirm - ([488382c](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/488382c576d573bfdd13730a651ca08adb8e86a1))
+- **(confirm)** Confirm Widget - ([ad4c89d](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/ad4c89d57161bc2b6b42a6488655e92c80a64d39)) by @Vaishnav-Sabari-Girish
+
+- **(adding button)** Started working on confirm - ([488382c](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/488382c576d573bfdd13730a651ca08adb8e86a1)) by @Vaishnav-Sabari-Girish
 
 - **(added input)** Added user input - ([f56bb95](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/f56bb95942800c96062f128ae326a3ad4264d7c1)) by @Vaishnav-Sabari-Girish
 
@@ -11,6 +13,8 @@
 
 
 ### :page_facing_up: Documentation
+
+- **(TOC updated)** TOC updated - ([61ba3af](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/61ba3af0af7e88579f3c69beffd58d009eaba674)) by @Vaishnav-Sabari-Girish
 
 - **(updated cl)** Updated changelog - ([ddf14bb](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/ddf14bb783022cb168663fba7b457e9e6f2e951d)) by @Vaishnav-Sabari-Girish
 
@@ -30,6 +34,12 @@
 
 
 ### :package: Other
+
+- **(updated lock)** Updated Cargo.lock - ([2fddedf](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/2fddedf6f4bbe49c921ada6c5b422784f98ec2e9)) by @Vaishnav-Sabari-Girish
+
+- Merge pull request #3 from Vaishnav-Sabari-Girish/feat/add_confirm
+
+Feat/add confirm - ([722ab1a](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/722ab1aa9620d82cf2a21c20dbc1f732fcb68340)) in [#3](https://github.com/Vaishnav-Sabari-Girish/nibble/pull/3) by @Vaishnav-Sabari-Girish
 
 - Updated Cargo.lock - ([230c02f](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/230c02f611be51e78285b8bd536d685bc87bf3cf)) by @Vaishnav-Sabari-Girish
 
