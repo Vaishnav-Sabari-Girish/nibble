@@ -1,9 +1,13 @@
-use crate::{error::{NibbleError, Result}, style::StyleConfig, tui};
+use crate::{
+    error::{NibbleError, Result},
+    style::StyleConfig,
+    tui,
+};
 use clap::Args;
 use crossterm::event::{self, Event, KeyCode};
 use ratatui::{
-    widgets::{Block as RatatuiBlock, Borders, Padding},
     Frame,
+    widgets::{Block as RatatuiBlock, Borders, Padding},
 };
 
 #[derive(Args, Debug)]
@@ -31,17 +35,15 @@ pub struct BlockArgs {
 pub fn run(args: BlockArgs) -> anyhow::Result<()> {
     // Validate args
     if args.height == 0 {
-        return Err(NibbleError::InvalidDimensions(
-            "Height must be greater than 0".to_string(),
-        )
-        .into());
+        return Err(
+            NibbleError::InvalidDimensions("Height must be greater than 0".to_string()).into(),
+        );
     }
 
     if args.width > 100 {
-        return Err(NibbleError::InvalidDimensions(
-            "Width must be between 0 and 100".to_string(),
-        )
-        .into());
+        return Err(
+            NibbleError::InvalidDimensions("Width must be between 0 and 100".to_string()).into(),
+        );
     }
 
     let mut terminal = tui::init_inline(args.height)?;

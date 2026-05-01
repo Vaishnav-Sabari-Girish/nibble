@@ -8,7 +8,7 @@ mod tui;
 mod widgets;
 
 use clap::{Parser, Subcommand};
-use widgets::{block, gauge, table, input, confirm};
+use widgets::{block, confirm, gauge, input, table};
 
 #[derive(Parser)]
 #[command(name = "nibble")]

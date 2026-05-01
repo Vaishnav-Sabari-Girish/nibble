@@ -1,6 +1,7 @@
 # Nibble
 
-A tool for glamorous shell scripts. Quick, inline TUI components built with Ratatui—no full-screen takeover, just small bites of interaction.
+A tool for glamorous shell scripts. Quick, inline TUI components built with
+Ratatui—no full-screen takeover, just small bites of interaction.
 
 This tool was inspired by [`gum`](https://github.com/charmbracelet/gum)
 
@@ -8,19 +9,19 @@ This tool was inspired by [`gum`](https://github.com/charmbracelet/gum)
 [![License](https://img.shields.io/badge/license-MIT%2FApache--2.0-blue.svg)](LICENSE-APACHE)
 [![Minimum Supported Rust Version](https://img.shields.io/badge/MSRV-1.70.0-blue.svg)](https://rust-lang.org)
 
-## Changelog 
+## Changelog
 
 To view the changelog go to [CHANGELOG.md](./CHANGELOG.md) for more details
 
-## Installation 
+## Installation
 
 ``` bash
 cargo install nibble-rs
 ```
 
-## Usage 
+## Usage
 
-### Widgets 
+### Widgets
 
 Currently `nibble` supports the following widgets
 
@@ -40,7 +41,7 @@ Gives you this output
 nibble gauge -v 75 --title "Progress" --border double --fg green --modifier bold --time 120
 ```
 
-Gives you this output 
+Gives you this output
 
 ![gauge](https://vhs.charm.sh/vhs-5RKyIF079btFrL1EFz948L.gif)
 
@@ -48,13 +49,13 @@ Gives you this output
 
 Display tabular data inline with customizable styling and multiple data formats.
 
-This below command 
+This below command
 
 ```bash
 nibble table --data "Name,Age,City;Alice,30,NYC;Bob,25,LA;Carol,28,SF" -t "Users" --highlight-header
 ```
 
-Will output this 
+Will output this
 
 ![table](https://vhs.charm.sh/vhs-1Aql3bxeY6rs8auZSFcQbx.gif)
 
@@ -83,15 +84,19 @@ nibble table -d "Product,Price,Stock;Laptop,999,50;Mouse,25,200" -w "50,25,25" -
 ```
 
 **Supported Formats:**
+
 - **Inline data**: Use semicolons (`;`) for rows and commas (`,`) for columns
 - **CSV files**: Standard comma-separated values
-- **JSON files**: Array of objects `[{"name": "Alice", ...}]` or array of arrays `[["Name", "Age"], ["Alice", 30]]`
+- **JSON files**: Array of objects `[{"name": "Alice", ...}]` or array of arrays
+  `[["Name", "Age"], ["Alice", 30]]`
 
 **Key Options:**
+
 - `--data, -d`: Inline data string
 - `--file, -f`: Path to CSV or JSON file
 - `--headers`: Custom column headers (comma-separated)
-- `--widths, -w`: Column widths as percentages (comma-separated, must sum to ≤100)
+- `--widths, -w`: Column widths as percentages (comma-separated, must sum to
+  ≤100)
 - `--highlight-header`: Bold the header row
 - `--height`: Table height in lines (default: 10)
 - `--title, -t`: Title for the table block
@@ -117,7 +122,8 @@ nibble table -d "Product,Price,Stock;Laptop,999,50;Mouse,25,200" -w "50,25,25" -
 
 #### Input
 
-Single-line text input field with support for prompts, placeholders, passwords, and character limits.
+Single-line text input field with support for prompts, placeholders, passwords,
+and character limits.
 
 **Basic Input:**
 
@@ -154,6 +160,7 @@ nibble input --title "User Input" --prompt "City:" --placeholder "New York" --bo
 ```
 
 **Key Options:**
+
 - `--prompt, -r`: Label text displayed before the input field
 - `--placeholder, -p`: Placeholder text shown when input is empty
 - `--value, -v`: Initial/pre-filled value
@@ -165,9 +172,10 @@ nibble input --title "User Input" --prompt "City:" --placeholder "New York" --bo
 
 #### Confirm
 
-Interactive confirmation prompt with Yes/No buttons. Returns exit code `0` for Yes and `1` for No.
+Interactive confirmation prompt with Yes/No buttons. Returns exit code `0` for
+Yes and `1` for No.
 
-**Basic Confirm**
+##### Basic Confirm
 
 ```bash
 # Default confirm
@@ -176,7 +184,7 @@ nibble confirm
 
 [![basic_confirm](https://asciinema.org/a/AMhbu8acmuu0hMIEf4SnWtjIc.svg)](https://asciinema.org/a/AMhbu8acmuu0hMIEf4SnWtjIc)
 
-**Custom Text with Custom options**
+##### Custom Text with Custom options
 
 ```bash
 # Custom Text
@@ -188,7 +196,7 @@ nibble confirm --text "Continue ?" --affirmative "Proceed" --negative "Cancel"
 
 [![custom_confirm](https://asciinema.org/a/eWOAq5YWufMuZjkyJopa5xbg9.svg)](https://asciinema.org/a/eWOAq5YWufMuZjkyJopa5xbg9)
 
-**Select No by default**
+##### Select No by default
 
 ```bash
 nibble confirm --text "Continue ?" --affirmative "Proceed" --negative "Cancel" --default-no

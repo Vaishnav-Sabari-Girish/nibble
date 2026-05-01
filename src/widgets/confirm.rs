@@ -6,11 +6,11 @@ use ratatui::layout::Rect;
 use ratatui::style::Modifier;
 use ratatui::widgets::Widget;
 use ratatui::{
-    layout::{Constraint, Layout, Alignment},
+    Frame,
+    layout::{Alignment, Constraint, Layout},
     style::Style,
     text::{Line, Span},
     widgets::{Block, Borders, Paragraph},
-    Frame,
 };
 
 use super::buttons::Button;
@@ -38,7 +38,7 @@ pub struct ConfirmArgs {
     pub default_no: bool,
 
     #[command(flatten)]
-    pub style: StyleConfig
+    pub style: StyleConfig,
 }
 
 pub fn run(args: ConfirmArgs) -> anyhow::Result<()> {
@@ -68,7 +68,7 @@ pub fn run(args: ConfirmArgs) -> anyhow::Result<()> {
                 KeyCode::Tab => selected = !selected,
 
                 // Quick selection
-                KeyCode::Char('y') |  KeyCode::Char('Y') => {
+                KeyCode::Char('y') | KeyCode::Char('Y') => {
                     break true;
                 }
                 KeyCode::Char('n') | KeyCode::Char('N') => {
@@ -85,14 +85,17 @@ pub fn run(args: ConfirmArgs) -> anyhow::Result<()> {
                     break false;
                 }
 
-                KeyCode::Char('c') if key.modifiers.contains(ratatui::crossterm::event::KeyModifiers::CONTROL) => {
+                KeyCode::Char('c')
+                    if key
+                        .modifiers
+                        .contains(ratatui::crossterm::event::KeyModifiers::CONTROL) =>
+                {
                     break false;
                 }
 
                 _ => {}
             }
         }
-
     };
 
     terminal.clear()?;
@@ -109,13 +112,13 @@ fn render(frame: &mut Frame, args: &ConfirmArgs, selected: bool) -> crate::error
     let area = frame.area();
     let text_style = args.style.text_style()?;
 
-    // Create main layout 
+    // Create main layout
     let chunks = Layout::vertical([
-        Constraint::Length(1),    // Question text
-        Constraint::Length(1),    // Spacing
-        Constraint::Length(3),    // Buttons area
+        Constraint::Length(1), // Question text
+        Constraint::Length(1), // Spacing
+        Constraint::Length(3), // Buttons area
     ])
-        .split(area);
+    .split(area);
 
     let question = Paragraph::new(args.text.as_str())
         .alignment(Alignment::Center)
@@ -126,16 +129,16 @@ fn render(frame: &mut Frame, args: &ConfirmArgs, selected: bool) -> crate::error
     // Create button layout (centered with fixed width)
     let button_width = args.affirmative.len().max(args.negative.len()) as u16 + 4;
     // +4 is for borders and padding
-    let total_width = button_width * 2 + 2;     // Two buttons + gap
+    let total_width = button_width * 2 + 2; // Two buttons + gap
 
     let button_area = centered_rect(chunks[2], total_width, 3);
 
     let button_chunks = Layout::horizontal([
         Constraint::Length(button_width),
-        Constraint::Length(2),            // Gap
+        Constraint::Length(2), // Gap
         Constraint::Length(button_width),
     ])
-        .split(button_area);
+    .split(button_area);
 
     // Render yes button
     let yes_button = Button::new(&args.affirmative)
@@ -157,10 +160,10 @@ fn centered_rect(area: Rect, width: u16, height: u16) -> Rect {
     let x = area.x + (area.width.saturating_sub(width)) / 2;
     let y = area.y + (area.height.saturating_sub(height)) / 2;
 
-    Rect { 
-        x, 
-        y, 
+    Rect {
+        x,
+        y,
         width: width.min(area.width),
-        height: height.min(area.height)
+        height: height.min(area.height),
     }
 }

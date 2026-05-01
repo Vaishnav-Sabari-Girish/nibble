@@ -1,10 +1,9 @@
 use crate::error::{NibbleError, Result};
 use crossterm::{
-    cursor,
-    terminal::{disable_raw_mode, enable_raw_mode, EnterAlternateScreen, LeaveAlternateScreen},
-    ExecutableCommand,
+    ExecutableCommand, cursor,
+    terminal::{EnterAlternateScreen, LeaveAlternateScreen, disable_raw_mode, enable_raw_mode},
 };
-use ratatui::{backend::CrosstermBackend, Terminal, TerminalOptions, Viewport};
+use ratatui::{Terminal, TerminalOptions, Viewport, backend::CrosstermBackend};
 use std::io::{Stdout, stderr, stdout};
 
 pub type Tui = Terminal<CrosstermBackend<Stdout>>;
@@ -17,9 +16,8 @@ pub fn init_inline(height: u16) -> Result<Tui> {
         ));
     }
 
-    enable_raw_mode().map_err(|e| {
-        NibbleError::TerminalInit(format!("Failed to enable raw mode: {}", e))
-    })?;
+    enable_raw_mode()
+        .map_err(|e| NibbleError::TerminalInit(format!("Failed to enable raw mode: {}", e)))?;
 
     // Hide cursor during TUI rendering
     stdout()
@@ -40,13 +38,12 @@ pub fn init_inline(height: u16) -> Result<Tui> {
 
 /// Initialize terminal with fullscreen (alternate screen)
 pub fn init_fullscreen() -> Result<Tui> {
-    enable_raw_mode().map_err(|e| {
-        NibbleError::TerminalInit(format!("Failed to enable raw mode: {}", e))
-    })?;
+    enable_raw_mode()
+        .map_err(|e| NibbleError::TerminalInit(format!("Failed to enable raw mode: {}", e)))?;
 
-    stdout()
-        .execute(EnterAlternateScreen)
-        .map_err(|e| NibbleError::TerminalInit(format!("Failed to enter alternate screen: {}", e)))?;
+    stdout().execute(EnterAlternateScreen).map_err(|e| {
+        NibbleError::TerminalInit(format!("Failed to enter alternate screen: {}", e))
+    })?;
 
     stdout()
         .execute(cursor::Hide)

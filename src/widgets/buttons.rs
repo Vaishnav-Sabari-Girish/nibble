@@ -6,13 +6,12 @@ use ratatui::layout::Rect;
 use ratatui::style::Modifier;
 use ratatui::widgets::Widget;
 use ratatui::{
-    layout::{Constraint, Layout, Alignment},
+    Frame,
+    layout::{Alignment, Constraint, Layout},
     style::Style,
     text::{Line, Span},
     widgets::{Block, Borders, Paragraph},
-    Frame,
 };
-
 
 pub struct Button<'a> {
     pub label: &'a str,
@@ -20,12 +19,12 @@ pub struct Button<'a> {
     style: Style,
 }
 
-impl<'a> Button<'a>  {
+impl<'a> Button<'a> {
     pub fn new(label: &'a str) -> Self {
-        Self  {
-            label: label,
+        Self {
+            label,
             selected: false,
-            style: Style::default()
+            style: Style::default(),
         }
     }
 
@@ -40,7 +39,7 @@ impl<'a> Button<'a>  {
     }
 }
 
-impl<'a> Widget for Button<'a>  {
+impl<'a> Widget for Button<'a> {
     fn render(self, area: Rect, buf: &mut Buffer) {
         // Apply selected style (reversed) or normal style
         let button_style = if self.selected {
@@ -50,9 +49,7 @@ impl<'a> Widget for Button<'a>  {
         };
 
         // Button block with borders
-        let block = Block::default()
-            .borders(Borders::ALL)
-            .style(button_style);
+        let block = Block::default().borders(Borders::ALL).style(button_style);
 
         // Render the block
         let inner = block.inner(area);
@@ -71,12 +68,10 @@ impl<'a> Widget for Button<'a>  {
             let y = inner.y + inner.height / 2;
 
             // Write each character of the label
-            for(i, ch) in self.label.chars().enumerate() {
+            for (i, ch) in self.label.chars().enumerate() {
                 let cell_x = x + i as u16;
                 if cell_x < inner.right() && y < inner.bottom() {
-                    buf[(cell_x, y)]
-                        .set_char(ch)
-                        .set_style(button_style);
+                    buf[(cell_x, y)].set_char(ch).set_style(button_style);
                 }
             }
         }

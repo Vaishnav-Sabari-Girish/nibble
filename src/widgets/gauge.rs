@@ -6,9 +6,9 @@ use crate::{
 use clap::Args;
 use crossterm::event::{self, Event, KeyCode};
 use ratatui::{
+    Frame,
     style::{Color, Style},
     widgets::{Block, Borders, Gauge as RatatuiGauge},
-    Frame,
 };
 use std::time::{Duration, Instant};
 
@@ -45,15 +45,21 @@ pub struct GaugeArgs {
 pub fn run(args: GaugeArgs) -> anyhow::Result<()> {
     // Validate args
     if args.height == 0 {
-        return Err(NibbleError::InvalidDimensions("Height must be greater than 0".to_string()).into());
+        return Err(
+            NibbleError::InvalidDimensions("Height must be greater than 0".to_string()).into(),
+        );
     }
 
     if args.value > 100 {
-        return Err(NibbleError::InvalidDimensions("Value must be between 0 and 100".to_string()).into());
+        return Err(
+            NibbleError::InvalidDimensions("Value must be between 0 and 100".to_string()).into(),
+        );
     }
 
     if args.time == 0 {
-        return Err(NibbleError::InvalidDimensions("Time must be greater than 0".to_string()).into());
+        return Err(
+            NibbleError::InvalidDimensions("Time must be greater than 0".to_string()).into(),
+        );
     }
 
     let mut terminal = tui::init_inline(args.height)?;
@@ -86,8 +92,8 @@ pub fn run(args: GaugeArgs) -> anyhow::Result<()> {
         } else {
             // Check for events with timeout
             if event::poll(update_interval)?
-            && let Event::Key(key) = event::read()?
-            && matches!(key.code, KeyCode::Char('q') | KeyCode::Esc)
+                && let Event::Key(key) = event::read()?
+                && matches!(key.code, KeyCode::Char('q') | KeyCode::Esc)
             {
                 tui::restore()?;
                 return Ok(());
@@ -108,67 +114,72 @@ pub fn run(args: GaugeArgs) -> anyhow::Result<()> {
 fn render(frame: &mut Frame, args: &GaugeArgs, current_value: u16) -> Result<()> {
     let area = frame.area();
 
-let gauge_style = args.style.gauge_style()?;
+    let gauge_style = args.style.gauge_style()?;
 
-// Get the gauge color (foreground color from style)
-let gauge_color = if let Some(ref color_str) = args.style.fg {
-    crate::style::parse_color(color_str)?
-} else if let Some(ref color_str) = args.style.border_color {
-    crate::style::parse_color(color_str)?
-} else {
-    Color::Cyan // Default gauge color
-};
-
-// Invert text color for better visibility
-// If gauge is filled, text should be dark; if empty, text should be light
-let label_style = Style::default().fg(invert_color(gauge_color));
-
-let label = if args.label.is_empty() {
-    if args.percentage {
-        format!("{}%", current_value)
+    // Get the gauge color (foreground color from style)
+    let gauge_color = if let Some(ref color_str) = args.style.fg {
+        crate::style::parse_color(color_str)?
+    } else if let Some(ref color_str) = args.style.border_color {
+        crate::style::parse_color(color_str)?
     } else {
-        format!("{}/100", current_value)
-    }
-} else {
-    // Show current value in custom label
-    if args.percentage {
-        format!("{} {}%", args.label, current_value)
-    } else {
-        format!("{} {}/100", args.label, current_value)
-    }
-};
+        Color::Cyan // Default gauge color
+    };
 
-let mut gauge = RatatuiGauge::default()
-    .gauge_style(gauge_style)
-    .label(ratatui::text::Span::styled(label, label_style))
-    .percent(current_value);
+    // Invert text color for better visibility
+    // If gauge is filled, text should be dark; if empty, text should be light
+    let label_style = Style::default().fg(invert_color(gauge_color));
 
-// Add block if title or border is specified
-if !args.title.is_empty() || args.style.border != "none" {
-    let border_type = args.style.border_type()?;
-    let border_style = args.style.border_style()?;
-    let block = Block::default()
-        .title(args.title.as_str())
-        .borders(if args.style.border == "none" {
-            Borders::NONE
+    let label = if args.label.is_empty() {
+        if args.percentage {
+            format!("{}%", current_value)
         } else {
+            format!("{}/100", current_value)
+        }
+    } else {
+        // Show current value in custom label
+        if args.percentage {
+            format!("{} {}%", args.label, current_value)
+        } else {
+            format!("{} {}/100", args.label, current_value)
+        }
+    };
+
+    let mut gauge = RatatuiGauge::default()
+        .gauge_style(gauge_style)
+        .label(ratatui::text::Span::styled(label, label_style))
+        .percent(current_value);
+
+    // Add block if title or border is specified
+    if !args.title.is_empty() || args.style.border != "none" {
+        let border_type = args.style.border_type()?;
+        let border_style = args.style.border_style()?;
+        let block = Block::default()
+            .title(args.title.as_str())
+            .borders(if args.style.border == "none" {
+                Borders::NONE
+            } else {
                 Borders::ALL
             })
-        .border_type(border_type)
-        .border_style(border_style);
-    gauge = gauge.block(block);
-}
+            .border_type(border_type)
+            .border_style(border_style);
+        gauge = gauge.block(block);
+    }
 
-frame.render_widget(gauge, area);
-Ok(())
+    frame.render_widget(gauge, area);
+    Ok(())
 }
 
 /// Invert color for better contrast
 fn invert_color(color: Color) -> Color {
     match color {
         // Light colors -> dark text
-        Color::White | Color::LightRed | Color::LightGreen | Color::LightBlue
-        | Color::LightYellow | Color::LightCyan | Color::LightMagenta => Color::Black,
+        Color::White
+        | Color::LightRed
+        | Color::LightGreen
+        | Color::LightBlue
+        | Color::LightYellow
+        | Color::LightCyan
+        | Color::LightMagenta => Color::Black,
 
         // Dark colors -> light text
         Color::Black | Color::DarkGray => Color::White,

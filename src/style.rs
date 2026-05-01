@@ -35,44 +35,44 @@ impl StyleConfig {
 
     pub fn border_style(&self) -> Result<RatatuiStyle> {
         let mut style = RatatuiStyle::default();
-        
+
         if let Some(ref color) = self.border_color {
             style = style.fg(parse_color(color)?);
         }
-        
+
         Ok(style)
     }
 
     pub fn text_style(&self) -> Result<RatatuiStyle> {
         let mut style = RatatuiStyle::default();
-        
+
         if let Some(ref color) = self.fg {
             style = style.fg(parse_color(color)?);
         }
-        
+
         if let Some(ref color) = self.bg {
             style = style.bg(parse_color(color)?);
         }
-        
+
         for modifier in &self.modifier {
             style = style.add_modifier(parse_modifier(modifier)?);
         }
-        
+
         Ok(style)
     }
 
     pub fn gauge_style(&self) -> Result<RatatuiStyle> {
         let mut style = RatatuiStyle::default();
-        
+
         if let Some(ref color) = self.fg {
             style = style.fg(parse_color(color)?);
         } else if let Some(ref color) = self.border_color {
             // Fallback to border color for gauge
             style = style.fg(parse_color(color)?);
         }
-        
+
         style = style.add_modifier(Modifier::BOLD);
-        
+
         Ok(style)
     }
 }

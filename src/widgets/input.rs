@@ -2,13 +2,13 @@ use crate::{error::NibbleError, style::StyleConfig, tui};
 use clap::Args;
 use ratatui::crossterm::event::{self, Event, KeyCode, KeyEvent, KeyModifiers};
 use ratatui::{
+    Frame,
     layout::{Constraint, Layout},
     style::Style,
     text::{Line, Span},
     widgets::{Block, Borders, Paragraph},
-    Frame,
 };
-use tui_input::{backend::crossterm::EventHandler, Input};
+use tui_input::{Input, backend::crossterm::EventHandler};
 
 #[derive(Args, Debug)]
 pub struct InputArgs {
@@ -86,10 +86,10 @@ pub fn run(args: InputArgs) -> anyhow::Result<()> {
     tui::restore()?;
 
     // THEN print the output (but NOT if it's a password)
-    if let Some(value) = result {
-        if !args.password {
-            println!("{}", value);
-        }
+    if let Some(value) = result
+        && !args.password
+    {
+        println!("{}", value);
     }
 
     Ok(())
@@ -108,15 +108,19 @@ fn handle_key_event(key: KeyEvent, input: &mut Input, args: &InputArgs) -> Input
         KeyCode::Char('c') if key.modifiers.contains(KeyModifiers::CONTROL) => InputAction::Cancel,
         _ => {
             // Check max length before allowing input
-            if let Some(max) = args.max_length {
-                if input.value().len() >= max
-                    && !matches!(
-                        key.code,
-                        KeyCode::Backspace | KeyCode::Delete | KeyCode::Left | KeyCode::Right | KeyCode::Home | KeyCode::End
-                    )
-                {
-                    return InputAction::Continue;
-                }
+            if let Some(max) = args.max_length
+                && input.value().len() >= max
+                && !matches!(
+                    key.code,
+                    KeyCode::Backspace
+                        | KeyCode::Delete
+                        | KeyCode::Left
+                        | KeyCode::Right
+                        | KeyCode::Home
+                        | KeyCode::End
+                )
+            {
+                return InputAction::Continue;
             }
 
             // Handle the event with tui-input
@@ -131,9 +135,11 @@ fn render(frame: &mut Frame, args: &InputArgs, input: &Input) -> crate::error::R
 
     // Create layout for prompt and input
     let (prompt_area, input_area) = if !args.prompt.is_empty() {
-        let chunks =
-            Layout::horizontal([Constraint::Length(args.prompt.len() as u16 + 2), Constraint::Min(1)])
-                .split(area);
+        let chunks = Layout::horizontal([
+            Constraint::Length(args.prompt.len() as u16 + 2),
+            Constraint::Min(1),
+        ])
+        .split(area);
         (Some(chunks[0]), chunks[1])
     } else {
         (None, area)

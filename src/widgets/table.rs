@@ -6,10 +6,10 @@ use crate::{
 use clap::Args;
 use crossterm::event::{self, Event, KeyCode};
 use ratatui::{
+    Frame,
     layout::Constraint,
     style::Style,
     widgets::{Block, Borders, Row, Table as RatatuiTable},
-    Frame,
 };
 use std::fs;
 
@@ -367,8 +367,5 @@ fn parse_widths(width_str: &str, num_cols: usize) -> Result<Vec<Constraint>> {
         )));
     }
 
-    Ok(widths
-        .iter()
-        .map(|&w| Constraint::Percentage(w))
-        .collect())
+    Ok(widths.iter().map(|&w| Constraint::Percentage(w)).collect())
 }
