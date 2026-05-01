@@ -1,0 +1,7 @@
+[default.extend-words]
+Ratatui = "Ratatui"
+ratatui = "ratatui"
+RataTui = "RataTui"
+
+[files]
+extend-exclude = ["CHANGELOG.md"]

@@ -42,7 +42,7 @@ postprocessors = []
 # See https://www.conventionalcommits.org
 conventional_commits = true
 # Exclude commits that do not match the conventional commits specification.
-filter_unconventional = false
+filter_unconventional = true
 # Split commits on newlines, treating each line as an individual commit.
 split_commits = false
 commit_parsers = [
@@ -59,7 +59,7 @@ commit_parsers = [
 # An array of regex based parsers to modify commit messages prior to further processing.
 commit_preprocessors = [{ pattern = '\((\w+\s)?#([0-9]+)\)', replace = "" }]
 # Exclude commits that are not matched by any commit parser.
-filter_commits = false
+filter_commits = true
 # Order releases topologically instead of chronologically.
 topo_order = false
 # Order of commits in each group/release within the changelog.

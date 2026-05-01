@@ -1,20 +1,3 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
-
-- [Nibble](#nibble)
-  - [Changelog](#changelog)
-  - [Installation](#installation)
-  - [Usage](#usage)
-    - [Widgets](#widgets)
-      - [Block](#block)
-      - [Gauge](#gauge)
-      - [Table](#table)
-      - [Input](#input)
-      - [Confirm](#confirm)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 # Nibble
 
 A tool for glamorous shell scripts. Quick, inline TUI components built with Ratatui—no full-screen takeover, just small bites of interaction.
