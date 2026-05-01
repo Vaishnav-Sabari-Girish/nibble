@@ -14,6 +14,8 @@
 
 ### :bug: Bug fixes
 
+- **(ci)** CI fix - ([cea0724](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/cea07242cf75cf1bd30c1ebe33db9ef92be64f04)) by @Vaishnav-Sabari-Girish
+
 - **(Changed stderr)** Change stdout to stderr - ([f4a7ed0](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/f4a7ed0e03e2c1abaebcf2cc20fc5693d47fa5d5)) by @Vaishnav-Sabari-Girish
 
 
@@ -38,6 +40,11 @@
 - **(updated log)** Updated changelog - ([7482e2e](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/7482e2e6d1ea92b2ab47d2a697028b92051a03e8)) by @Vaishnav-Sabari-Girish
 
 - **(added changelog)** Added CHANGELOG.md - ([a5008f4](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/a5008f4daba1b571c86d75b2a9e72fa548484ac9)) by @Vaishnav-Sabari-Girish
+
+
+### :wrench: Miscellaneous
+
+- **(changelog)** Update CHANGELOG.md for main [skip ci] - ([418ec70](https://github.com/Vaishnav-Sabari-Girish/nibble/commit/418ec706c15147ed0685f17dfe1c24be03c0f2a7)) by @github-actions[bot]
 
 
 ### :package: Other
